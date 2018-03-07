@@ -4,7 +4,7 @@
       <v-flex xs6 offset-xs3>
         <v-layout row>
           <v-flex xs6><h1 class="primary--text">Alle Posts</h1></v-flex>
-          <v-flex xs6 class="text-sm-right"><v-btn class="primary"><v-icon left>create</v-icon> Neuer Post</v-btn></v-flex>
+          <v-flex xs6 class="text-sm-right"><v-btn class="primary" router to="/posts/new"><v-icon left>create</v-icon> Neuer Post</v-btn></v-flex>
         </v-layout>
         <hr>
       </v-flex>
