@@ -4,7 +4,7 @@
 
       <v-layout row style="margin-top: 70px">
         <v-flex xs10 offset-xs1>
-          <v-carousel>
+          <v-carousel height="200px">
             <v-carousel-item
               v-for="post in posts"
               :key="post.id"
@@ -25,13 +25,13 @@
         </v-flex>
       </v-layout>
 
-      <v-layout row mt-0>
+      <v-layout row wrap mt-0>
         <v-flex xs12 sm4 style="padding: 10px" v-for="post in latestPosts" :key="post.id">
           <v-card>
             <v-card-media :src="post.imageUrl" height="200px"  @click="onLoadPost(post.id)" style="cursor: pointer"></v-card-media>
             <v-card-title>
               <div>
-                <h3 class="headline mb-0">{{ post.title }}</h3>
+                <h2 class="mb-0" style="font-weight: 400">{{ post.title }}</h2>
               </div>
             </v-card-title>
             <v-card-actions>

@@ -39,8 +39,13 @@
 export default {
   data () {
     return {
-      sideNav: false,
-      menuItems: [
+      sideNav: false
+    }
+  },
+  name: 'App',
+  computed: {
+    menuItems () {
+      let menuItems = [
         { icon: '', title: 'Home', link: '/' },
         { icon: '', title: 'Posts', link: '/posts' },
         { icon: '', title: 'Termine', link: '/termine' },
@@ -51,8 +56,22 @@ export default {
         { icon: '', title: 'Anmelden', link: '/signin' },
         { icon: '', title: 'Registrieren', link: '/signup' }
       ]
+      if (this.userIsAuthenticated) {
+        menuItems = [
+          { icon: '', title: 'Home', link: '/' },
+          { icon: '', title: 'Posts', link: '/posts' },
+          { icon: '', title: 'Termine', link: '/termine' },
+          { icon: '', title: 'Tigers', link: '/tigers' },
+          { icon: '', title: 'Sponsoren', link: '/sponsoren' },
+          { icon: '', title: 'History', link: '/history' },
+          { icon: '', title: 'Kontakt', link: '/kontakt' }
+        ]
+      }
+      return menuItems
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
     }
-  },
-  name: 'App'
+  }
 }
 </script>

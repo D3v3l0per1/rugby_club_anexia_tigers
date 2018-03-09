@@ -8,9 +8,9 @@
           </v-card-title>
           <v-card-media :src="post.imageUrl" height="600px"></v-card-media>
           <v-card-text>
-            <div class="info--text mb-1">{{ post.date }} - Where it takes place</div>
+            <div class="info--text mb-1">{{ post.date | date }} - {{ post.location }}</div>
             <hr>
-            <div class="mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos unde aliquid est. Ipsum incidunt magni natus libero perferendis molestias doloribus eligendi, reprehenderit itaque adipisci fugiat, culpa hic eos nesciunt accusamus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nobis fuga molestiae sint temporibus in. Officiis dolore officia omnis vitae vero placeat adipisci amet ut, dolorem obcaecati nisi nesciunt corporis.</div>
+            <div class="mt-3">{{ post.description }}</div>
           </v-card-text>
           <v-card-actions>
             <v-btn icon>

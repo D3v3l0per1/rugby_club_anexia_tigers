@@ -1,7 +1,7 @@
 <template>
   <v-container style="margin-top: 70px;">
     <v-layout row wrap>
-      <v-flex xs6 offset-xs3>
+      <v-flex xs12 md8 offset-md2>
         <v-layout row>
           <v-flex xs6><h1 class="primary--text">Alle Posts</h1></v-flex>
           <v-flex xs6 class="text-sm-right"><v-btn class="primary" router to="/posts/new"><v-icon left>create</v-icon> Neuer Post</v-btn></v-flex>
@@ -11,7 +11,7 @@
     </v-layout>
 
     <v-layout row wrap v-for="post in posts" :key="post.id" class="mt-3">
-      <v-flex xs6 offset-xs3>
+      <v-flex xs12 md8 offset-md2>
         <v-card class="info">
           <v-container fluid>
             <v-layout row>
@@ -22,7 +22,7 @@
               <v-card-title primary-title>
                 <div>
                   <h1 class="white--text mb-0">{{ post.title }}</h1>
-                  <div>{{ post.date }}</div>
+                  <div>{{ post.date | date }}</div>
                 </div>
               </v-card-title>
               <v-card-actions>

@@ -28,17 +28,17 @@
               <img :src="imageUrl" height="170">
             </v-flex>
           </v-layout>
-          <v-layout row>
-            <v-flex xs12 sm6 offset-xs3>
+          <v-layout row wrap>
+            <v-flex xs12 sm6 offset-sm5>
                 <v-date-picker v-model="date"></v-date-picker>
             </v-flex>
-            <v-flex xs12 sm6 offset-xs3>
-                <v-time-picker v-model="time"></v-time-picker>           
+            <v-flex xs12 sm6 offset-sm5 mt-3>
+                <v-time-picker v-model="time" format="24hr"></v-time-picker>      
             </v-flex>
           </v-layout>
           <v-layout row>
-            <v-flex xs6 offset-xs3>
-              <v-text-field name="description" label="Beschreibung" id="description" v-model="description" multi-line required></v-text-field>
+            <v-flex xs12 sm6 offset-sm3>
+              <v-text-field name="description" label="Beschreibung" id="description" v-model="description" multi-line required></v-text-field>      
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -67,6 +67,19 @@
     computed: {
       formIsValid () {
         return this.title !== '' && this.location !== '' && this.imageURL !== '' && this.description !== ''
+      },
+      submittableDateTime () {
+        const date = new Date(this.date)
+        if (typeof this.time === 'string') {
+          const hours = this.time.match(/^(\d+)/)[1]
+          const minutes = this.time.match(/:(\d+)/)[1]
+          date.setHours(hours)
+          date.getMinutes(minutes)
+        } else {
+          date.setHours(this.time.getHours())
+          date.getMinutes(this.time.getMinutes())
+        }
+        return date
       }
     },
     methods: {
@@ -79,7 +92,7 @@
           location: this.location,
           imageUrl: this.imageUrl,
           description: this.description,
-          date: new Date()
+          date: this.submittableDateTime
         }
         this.$store.dispatch('createPost', postData)
         this.$router.push('/posts')
